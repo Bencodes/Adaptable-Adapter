@@ -33,6 +33,7 @@ Option 2:
 		mListView.setAdapter(new ArrayAdapter<String>(this, someArrayList, new AdapterListener() {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
+				// Do your work here
 				
 				return convertView;
 			}
