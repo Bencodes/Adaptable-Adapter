@@ -89,7 +89,6 @@
                     <version>${android-maven-plugin.version}</version>
                     <configuration>
                         <sdk>
-                            <path>/Users/Ben/Android</path>
                             <platform>${android.platform}</platform>
                         </sdk>
                     </configuration>
