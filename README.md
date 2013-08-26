@@ -1,40 +1,101 @@
-Fancy ArrayAdapter
-==============================
+Adaptable ArrayAdapter
+============
 
-This project is a simple extension for the [ArrayAdapter](http://developer.android.com/reference/android/widget/ArrayAdapter.html) class Google provides. All it does is pull the getView into an interface so you no longer need to duplicate an Adapter and modify the getView.
+Dead simple list adapters in Andorid.
+
+
+Download
+------------
+Download [the latest JAR](https://raw.github.com/Bencodes/Adaptable-Adapter/downloads/adapter.jar).
+
+
 
 Usage
------------
+------------
+Basic usage:
 
-Include the `ArrayAdapter` class in your project and just simply implement `ArrayAdapter.AdapterListener`. Look at the Demo project to see it in action.
+```java
+public class MyActivity extends ListActivity implements Adapter.AdapterListener {
 
-Option 1:
+	private Adapter<String> mAdapter;
 
-	public void MyActivity extends Activity implements ArrayAdapter.AdapterListener
-		
-		public void setListAdapter() {
-			mListView.setAdapter(new ArrayAdapter<String>(context, data, this));
-		}
-		
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// Do your work here
-		
-			return convertView;
-		}
-		
-		// Your Code
-		// ...
-		
+	@Override
+	public void onCreate (Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mAdapter = new Adapter<String>(new String[]{"1", "2", "3"}, this);
+		super.setListAdapter(mAdapter);
+	}
 
-	
-Option 2:
+	@Override
+	public View getView (int position, View convertView, ViewGroup parent) {
+		// Inflate our view here
+		return convertView;
+	}
+}
+```
 
-		mListView.setAdapter(new ArrayAdapter<String>(this, someArrayList, new AdapterListener() {
-			@Override
-			public View getView(int position, View convertView, ViewGroup parent) {
-				// Do your work here
-				
-				return convertView;
-			}
-		}));
+Endless Scrolling Usage:
+
+```java
+public class MyActivity extends ListActivity implements EndlessAdapter.EndlessAdapterListener<String[]> {
+
+	private EndlessAdapter<String> mAdapter;
+
+	@Override
+	public void onCreate (Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mAdapter = new EndlessAdapter<String>(new String[]{"1", "2", "3"}, this);
+		super.setListAdapter(mAdapter);
+	}
+
+	@Override
+	public View getView (int position, View convertView, ViewGroup parent) {
+		// Inflate our view here
+		return convertView;
+	}
+
+	@Override
+	public String[] doInBackground () {
+		// Get more data
+		return new String[]{"4", "5", "6"};
+	}
+
+	@Override
+	public boolean onPostExecute (String[] data) {
+		// Append our data
+		mAdapter.addAll(data);
+		return true;
+	}
+
+	@Override
+	public View getPendingView (ViewGroup parent) {
+		// Inflate our progress view
+		ProgressBar progressBar = new ProgressBar(this);
+		return progressBar;
+	}
+}
+```
+
+
+Developed By
+--------
+
+* [Ben Lee](mailto:ben@ben.cm)
+
+
+
+License
+--------
+    Copyright 2013 Ben Lee
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
