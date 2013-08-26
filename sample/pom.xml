@@ -27,7 +27,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <name>Adapter (Demo)</name>
+    <name>Adapter (Sample)</name>
     <artifactId>demo</artifactId>
     <packaging>apk</packaging>
 
