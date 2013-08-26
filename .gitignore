@@ -1,3 +1,7 @@
+#Android generated
+bin
+gen
+
 #Eclipse
 .project
 .classpath
@@ -9,14 +13,22 @@
 *.iml
 *.ipr
 *.iws
+classes
+gen-external-apklibs
 
 #Maven
 target
+out
 release.properties
 pom.xml.*
 
-#OSX
-.DS_Store
+#Ant
+build.xml
+ant.properties
+local.properties
+proguard.cfg
+proguard-project.txt
 
-#Android
-bin/
+#Other
+.DS_Store
+tmp
