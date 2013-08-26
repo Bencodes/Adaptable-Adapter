@@ -13,7 +13,7 @@
 
     <modules>
         <module>adapter</module>
-        <module>demo</module>
+        <module>sample</module>
     </modules>
 
     <properties>
