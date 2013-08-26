@@ -6,7 +6,7 @@ Dead simple list adapters in Andorid.
 
 Download
 ------------
-Download [the latest JAR](https://raw.github.com/Bencodes/Adaptable-Adapter/downloads/adapter.jar).
+Download [the latest JAR](https://raw.github.com/Bencodes/Adaptable-Adapter/master/downloads/adapter.jar).
 
 
 
